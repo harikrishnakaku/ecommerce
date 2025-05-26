@@ -1,0 +1,25 @@
+#!/bin/bash
+
+srvs=("ssh" "ufw" "postfix" "cron")
+i=1
+while  [ 5 -ge $i ]; do
+        echo "Checking the service at $(date) "
+        echo "------------------------------------"
+        for srv in ${srvs[@]}; do
+                systemctl is-active --quiet $srv
+
+                if [ $? -eq 0 ]; then
+                        echo "$srv Service is running...!!"
+                else
+                        echo "$srv Service is Not-Running...!!"
+                fi
+                sleep 1
+        done
+
+        sleep 10
+
+        ((i++))
+        echo
+done
+
+echo "your exited from the loop"
