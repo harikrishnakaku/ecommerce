@@ -15,7 +15,6 @@ while  [ 5 -ge $i ]; do
                 fi
                 sleep 1
         done
-
         sleep 10
 
         ((i++))
